@@ -1,0 +1,17 @@
+<header class="bg-black-90  fixed top-0 w-100 ph3 pv3 pv4-ns ph4-m ph5-l z-2">
+  {%- assign default_paths = site.pages | map: "path" -%}
+  {%- assign page_paths = site.header_pages | default: default_paths -%}
+
+  {%- if page_paths -%}
+  <nav class="f6 fw6 ttu tracked tl tr-ns relative">
+    <a class="relative block absolute-ns dib-ns left-0 link dim white " href="{{ "/" | relative_url }}">{{ site.title }}</a>
+    {%- for path in page_paths -%}
+      {%- assign my_page = site.pages | where: "path", path | first -%}
+      {%- if my_page.title -%}
+      <a class="link dim white dib mr3" href="{{ my_page.url | relative_url }}" title="{{ my_page.title | escape }}">{{ my_page.title | escape }}</a>
+      {%- endif -%}
+    {% endfor -%}
+  </nav>
+  {%- endif -%}
+</header>
+

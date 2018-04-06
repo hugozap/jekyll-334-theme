@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    {%- for post in site.posts -%}
+
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      <article>
+          <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="{{ post.url | relative_url }}">
+            <div class="dtc w3">
+              <img src="http://mrmrs.github.io/images/0010.jpg" class="db w-100"/>
+            </div>
+            <div class="dtc v-top pl2">
+              <h1 class="f6 f5-ns fw6 lh-title black mv0">{{ post.title | escape }}</h1>
+              <h2 class="f6 fw4 mt2 mb0 black-60">{{ post.date | date: date_format }}</h2>
+              <dl class="mt2 f6">
+                <dt class="clip">Price</dt>
+                <dd class="ml0"></dd>
+              </dl>
+              <p>
+                {%- if site.show_excerpts -%}
+                  {{ post.excerpt }}
+                {%- endif -%}
+              </p>
+            </div>
+          </a>
+      </article>
+
+    {%- endfor -%}
+
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+  {%- endif -%}
+
+</div>
