@@ -49,7 +49,7 @@ header_pages:
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: jekyll334
 exclude:
   - Gemfile
   - Gemfile.lock
